@@ -34,6 +34,7 @@ public class UserServicelmp implements UserService{
     }
 
     @Override
+    
     public void edit(User user) {
         userDao.edit(user);
     }
