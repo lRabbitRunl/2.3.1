@@ -12,7 +12,10 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="getEntityManagerFactory" value="04df2657-d260-4939-9c09-a07c22f2d79b" />
+          <factory-entry name="spring-mvc" value="04df2657-d260-4939-9c09-a07c22f2d79b" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -72,5 +75,7 @@
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.5" level="project" />
   </component>
 </module>

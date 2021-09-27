@@ -1,10 +1,12 @@
 package web.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "people")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,6 +19,8 @@ public class User {
 
     @Column(name = "lastName")
     private String lastName;
+
+    public User(){}
 
     public Integer getId() {
         return id;
@@ -44,5 +48,18 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return getUsername().equals(user.getUsername()) && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername(), getFirstName(), getLastName());
     }
 }

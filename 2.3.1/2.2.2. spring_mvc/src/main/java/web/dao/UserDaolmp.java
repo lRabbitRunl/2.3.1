@@ -1,6 +1,8 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
+
+import org.hibernate.Session;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
@@ -10,17 +12,23 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class UserDaolmp implements UserDao{
+public class UserDaolmp implements UserDao {
+
+
 
     @PersistenceContext
     private EntityManager entityManager;
 
+
+
     @Override
+    @SuppressWarnings("unchecked")
     public List<User> allUsers() {
         return entityManager.createQuery("from " + User.class.getName()).getResultList();
     }
 
     @Override
+
     public void add(User user) {
         entityManager.persist(user);
     }
@@ -32,7 +40,10 @@ public class UserDaolmp implements UserDao{
 
     @Override
     public void edit(User user) {
-        entityManager.merge(user);
+        Session session =(Session) entityManager.getDelegate();
+        session.update(user);
+        session.delete(user);
+
     }
 
     @Override
@@ -41,4 +52,6 @@ public class UserDaolmp implements UserDao{
         query.setParameter("id", id);
         return query.getResultList().stream().findAny().orElse(null);
     }
+
+
 }
