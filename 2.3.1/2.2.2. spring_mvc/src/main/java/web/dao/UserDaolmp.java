@@ -1,11 +1,9 @@
 package web.dao;
 
 
-import org.hibernate.Session;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import org.springframework.stereotype.Repository;
 import web.model.User;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -40,10 +38,7 @@ public class UserDaolmp implements UserDao {
 
     @Override
     public void edit(User user) {
-        Session session =(Session) entityManager.getDelegate();
-        session.update(user);
-        session.delete(user);
-
+        entityManager.merge(user);
     }
 
     @Override

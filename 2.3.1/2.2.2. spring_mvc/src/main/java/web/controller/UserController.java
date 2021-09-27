@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
+@Transactional
 public class UserController {
 
     private final UserService userService;

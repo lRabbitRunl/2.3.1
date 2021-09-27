@@ -11,7 +11,7 @@ import java.util.List;
 @Transactional
 public class UserServicelmp implements UserService{
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public UserServicelmp(UserDao userDao) {
@@ -34,7 +34,7 @@ public class UserServicelmp implements UserService{
     }
 
     @Override
-    
+
     public void edit(User user) {
         userDao.edit(user);
     }
